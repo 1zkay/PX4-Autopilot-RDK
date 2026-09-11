@@ -16,7 +16,7 @@
 Testing/
 Packages/*
 build/*
-build_*/
+/build_*/
 cscope.out
 cscope.in.out
 cscope.po.out
@@ -61,6 +61,8 @@ posix-configs/SITL/init/test/*_generated
 /msg/ros/*.msg
 
 *.gcov
+*.gcda
+*.gcno
 .coverage
 .coverage.*
 
@@ -71,7 +73,8 @@ posix-configs/SITL/init/test/*_generated
 # cmake in tree (ninja)
 .ninja_deps
 .ninja_log
-bin/
+# Keep nested bin/ and external/ directories that contain dependency sources.
+/bin/
 build.ninja
 cmake_install.cmake
 CMakeCache.txt
@@ -80,7 +83,7 @@ compile_commands.json
 CPackConfig.cmake
 CPackSourceConfig.cmake
 CTestTestfile.cmake
-external/
+/external/
 rules.ninja
 
 # in tree build
@@ -107,16 +110,49 @@ src/systemcmds/topic_listener/listener_generated.cpp
 !src/drivers/distance_sensor/broadcom/afbrs50/Lib/*
 
 # colcon
-log/
-keys/
+/install/
+/log/
+/keys/
 
 # metadata
 _emscripten_sdk/
 
 # virtual Python environment
 .venv
+/venv/
+/env/
+__pycache__/
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Local dependency caches and package output
+node_modules/
+/dist/
+
+# Local environment variables; keep reusable templates
+/.env
+/.env.*
+!/.env.example
+!/.env.sample
+!/.env.template
+
+# PX4 runtime files created in the repository root
+# Keep flight logs and binary fixtures under docs/, boards/ and test directories.
+/dataman
+/parameters.bson
+/parameters_backup.bson
+/*.ulg
+/*.tlog
+/*.log
+/*.px4
+/*.elf
 
 # Claude Code local settings
 .claude/settings.local.json
 
-px4-rdk.zip
+# Local repository archives
+/px4-rdk.zip
+/PX4-Autopilot-RDK*.zip
