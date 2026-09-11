@@ -888,9 +888,11 @@ MavlinkReceiver::handle_message_optical_flow_rad(mavlink_message_t *msg)
 		sensor_optical_flow.delta_angle_available = true;
 	}
 
-	sensor_optical_flow.max_flow_rate       = NAN;
-	sensor_optical_flow.min_ground_distance = NAN;
-	sensor_optical_flow.max_ground_distance = NAN;
+	// Use the MAVLink flow sensor's configured range limits so that EKF2 can check
+	// whether the measurement is within the sensor's valid distance and rate range.
+	sensor_optical_flow.max_flow_rate       = _param_sens_flow_maxr.get();
+	sensor_optical_flow.min_ground_distance = _param_sens_flow_minhgt.get();
+	sensor_optical_flow.max_ground_distance = _param_sens_flow_maxhgt.get();
 
 	// Use distance value for distance sensor topic
 	if (PX4_ISFINITE(flow.distance) && (flow.distance >= 0.f)) {
@@ -934,9 +936,11 @@ MavlinkReceiver::handle_message_hil_optical_flow(mavlink_message_t *msg)
 		sensor_optical_flow.delta_angle_available = true;
 	}
 
-	sensor_optical_flow.max_flow_rate       = NAN;
-	sensor_optical_flow.min_ground_distance = NAN;
-	sensor_optical_flow.max_ground_distance = NAN;
+	// Use the MAVLink flow sensor's configured range limits so that EKF2 can check
+	// whether the measurement is within the sensor's valid distance and rate range.
+	sensor_optical_flow.max_flow_rate       = _param_sens_flow_maxr.get();
+	sensor_optical_flow.min_ground_distance = _param_sens_flow_minhgt.get();
+	sensor_optical_flow.max_ground_distance = _param_sens_flow_maxhgt.get();
 
 	// Use distance value for distance sensor topic
 	if (PX4_ISFINITE(flow.distance) && (flow.distance >= 0.f)) {

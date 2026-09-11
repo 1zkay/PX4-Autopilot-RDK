@@ -431,7 +431,10 @@ private:
 		(ParamFloat<px4::params::BAT_LOW_THR>)      _param_bat_low_thr,
 		(ParamInt<px4::params::BAT1_N_CELLS>)       _param_bat_cells_count,
 		(ParamFloat<px4::params::BAT1_V_CHARGED>)   _param_bat_v_charged,
-		(ParamFloat<px4::params::BAT1_V_EMPTY>)     _param_bat_v_empty
+		(ParamFloat<px4::params::BAT1_V_EMPTY>)     _param_bat_v_empty,
+		(ParamFloat<px4::params::SENS_FLOW_MAXR>)   _param_sens_flow_maxr,
+		(ParamFloat<px4::params::SENS_FLOW_MINHGT>) _param_sens_flow_minhgt,
+		(ParamFloat<px4::params::SENS_FLOW_MAXHGT>) _param_sens_flow_maxhgt
 	);
 
 	// Disallow copy construction and move assignment.
